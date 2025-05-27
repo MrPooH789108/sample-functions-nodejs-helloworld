@@ -1,8 +1,7 @@
 function main(args) {
-    let name = args.name || 'stranger'
+    let name = args.name || process.env.DD_API_KEY
     let greeting = 'Hello ' + name + '!'
     console.log(greeting)
-    console.log('Your API Key is = ' + process.env.DD_API_KEY)
     return {"body": greeting}
   }
 
