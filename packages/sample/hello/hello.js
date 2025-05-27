@@ -1,3 +1,5 @@
+require('./trace'); // <- สำคัญ: preload tracing ก่อน express
+
 function main(args) {
     let name = args.name || 'stranger'
     let greeting = 'Hello ' + name + '!'
