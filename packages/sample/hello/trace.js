@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv').config();
 const process = require('process');
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-proto');
@@ -20,10 +20,11 @@ class LoggingOTLPTraceExporter extends OTLPTraceExporter {
   }
 }
 
+print(process.env.DD_API_KEY)
 const exporter = new LoggingOTLPTraceExporter({
   url: 'https://trace.agent.datadoghq.com/api/v0.2/traces',  // เปลี่ยนเป็น endpoint ของคุณถ้าจำเป็น
   headers: {
-    'dd-api-key': '9abb156d02a0b2d2a8a67d9d61aa06bd', //datadog api key
+    'dd-api-key': process.env.DD_API_KEY, //datadog api key
     'dd-protocol': 'otlp',
     'dd-otlp-source': 'datadog', // หรือใช้ชื่อแอปหรือ team
   },
